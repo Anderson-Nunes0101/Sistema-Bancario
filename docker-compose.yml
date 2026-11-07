@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./banco
+      dockerfile: Dockerfile
+    container_name: banco-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./banco/.env
+    networks:
+      - banco-network
+
+  web:
+    build:
+      context: ./BancoWeb
+      dockerfile: Dockerfile
+    container_name: banco-web
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+networks:
+  banco-network:
+    external: true

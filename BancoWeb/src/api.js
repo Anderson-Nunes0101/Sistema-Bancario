@@ -1,4 +1,4 @@
-const BASE = (import.meta.env.VITE_API_URL || "http://localhost:8080").replace(/\/$/, "");
+const BASE = "http://13.61.19.54:8080";
 const CHAVE = "banco.web.sessao";
 
 export class ErroApi extends Error {
