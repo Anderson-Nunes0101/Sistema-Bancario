@@ -29,10 +29,10 @@ export default function Login() {
   return (
     <div className="login">
       <section className="login-painel">
-        <p className="login-marca">Banco</p>
-        <h1>Entrar no back-office</h1>
+        <p className="login-marca">N-Banc</p>
+        <h1>Entrar</h1>
         <p className="suave">
-          Acesso para funcionários e administradores. Os clientes entram pela aplicação móvel com o número da conta e o PIN.
+          Acesso para funcionários.
         </p>
 
         <form className="form" onSubmit={enviar}>
