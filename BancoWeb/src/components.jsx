@@ -74,7 +74,7 @@ export function useConfirmar() {
   return { confirmar, dialogo };
 }
 
-/** Mostra "a carregar" / erro com botão de repetir, ou o conteúdo. */
+
 export function Carga({ aCarregar, erro, dados, aoTentar, children }) {
   if (erro) {
     return (

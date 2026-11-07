@@ -45,7 +45,7 @@ export default function ClienteConta({ recarregar }) {
         }
     }
 
-    // recarrega sempre que o separador volta a ficar ativo (ex.: depois de transferir)
+    
     useEffect(() => {
         carregar();
     }, [carregar, recarregar]);
@@ -121,3 +121,4 @@ const styles = StyleSheet.create({
     detalhe: { color: "#555", marginTop: 3 },
     link: { color: "#1455a0", fontWeight: "bold", marginVertical: 12, textAlign: "center" }
 });
+//hacker-chefao

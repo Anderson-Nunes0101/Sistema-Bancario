@@ -4,7 +4,7 @@ export function moeda(v) {
   return (n < 0 ? "-" : "") + inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "," + decimais + "\u00a0MT";
 }
 
-// "2026-11-05T15:54:12.123" -> "05/11/2026 15:54"
+
 export function dataHora(iso) {
   if (!iso) return "";
   const s = String(iso);
@@ -13,7 +13,7 @@ export function dataHora(iso) {
 
 export const soDigitos = (t) => t.replace(/\D/g, "");
 
-// Aceita "10,5" ou "10.50"; devolve número ou null (máx. 2 casas decimais, > 0)
+
 export function lerValor(texto) {
   const t = String(texto).trim().replace(",", ".");
   if (!/^\d+(\.\d{1,2})?$/.test(t)) return null;
@@ -62,7 +62,7 @@ export const GRUPOS = [
   { titulo: "Administração", chaves: ["PERMISSAO_GERIR", "SISTEMA_GERIR"] }
 ];
 
-// Pacote que o backend aplica por omissão a um novo funcionário
+
 export const PACOTE_PADRAO = [
   "CLIENTE_CRIAR", "CLIENTE_CONSULTAR", "CLIENTE_ATUALIZAR", "CLIENTE_ELIMINAR",
   "CONTA_CRIAR", "CONTA_CONSULTAR", "CONTA_ATUALIZAR", "CONTA_ELIMINAR", "CONTA_BLOQUEAR", "CONTA_DESBLOQUEAR",

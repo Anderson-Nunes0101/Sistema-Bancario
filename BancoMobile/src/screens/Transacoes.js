@@ -11,7 +11,6 @@ import { moeda, dataHora, soDigitos, lerValor } from "../utils/formato";
 
 const TAMANHO = 30;
 
-// Funcionário: depósitos + histórico completo (somente leitura; as transações não se alteram nem apagam)
 export default function Transacoes() {
 
     const { tem } = useAuth();

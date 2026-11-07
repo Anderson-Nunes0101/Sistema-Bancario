@@ -14,8 +14,8 @@ export default function Clientes() {
   const { dados, erro, aCarregar, recarregar } = useCarregar(() => ClientesApi.listar());
 
   const [busca, setBusca] = useState("");
-  const [form, setForm] = useState(null); // cliente em edição ou novo
-  const [contaDe, setContaDe] = useState(null); // cliente para abrir conta
+  const [form, setForm] = useState(null); 
+  const [contaDe, setContaDe] = useState(null); 
 
   const lista = (dados || []).filter((c) =>
     [c.nome, c.bi, c.numero, c.email].join(" ").toLowerCase().includes(busca.trim().toLowerCase())

@@ -24,7 +24,7 @@ export default function Dashboard() {
 
     async function carregarResumo() {
 
-        // cada contagem só é pedida se o funcionário tiver a permissão correspondente
+       
         const tamanho = (res) => {
             if (res.status !== "fulfilled") return 0;
             const d = res.value.data;

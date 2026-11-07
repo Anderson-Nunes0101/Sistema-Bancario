@@ -17,7 +17,7 @@ export default function Contas() {
     const [clienteId, setClienteId] = useState("");
     const [pin, setPin] = useState("");
 
-    // reposição de PIN: id da conta em edição + novo PIN
+    
     const [pinContaId, setPinContaId] = useState(null);
     const [novoPin, setNovoPin] = useState("");
 

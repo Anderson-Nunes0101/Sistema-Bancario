@@ -1,7 +1,7 @@
 import axios from "axios";
 import { tokenAtual } from "./sessao";
 
-const API_URL = "http://192.168.43.70:8080";
+const API_URL = "http://13.61.19.54:8080";
 
 const api = axios.create({
     baseURL: API_URL,
@@ -12,7 +12,7 @@ const api = axios.create({
     }
 });
 
-// Callback registado pelo AuthContext para terminar a sessão quando o token expira/é recusado
+
 let aoExpirarSessao = null;
 export function registarSessaoExpirada(fn) {
     aoExpirarSessao = fn;
@@ -69,7 +69,7 @@ export const ContaAPI = {
     eliminar: (id) => api.delete(`/api/contas/${id}`)
 };
 
-// FUNCIONÁRIO: TRANSAÇÕES (histórico imutável + depósitos)
+// FUNCIONÁRIO: TRANSAÇÕES 
 export const TransacaoAPI = {
     listar: (pagina = 0, tamanho = 30) =>
         api.get("/api/transacoes", { params: { pagina, tamanho } }),
@@ -87,3 +87,4 @@ export const MinhaContaAPI = {
 };
 
 export default api;
+//hacker-chefao

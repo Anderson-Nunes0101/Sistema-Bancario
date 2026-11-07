@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
     definirAoExpirar(sair);
   }, [sair]);
 
-  // termina a sessão quando o token expira
+
   useEffect(() => {
     if (!sessao) return undefined;
     const ms = Math.max(Date.parse(sessao.expiraEm) - Date.now(), 0);

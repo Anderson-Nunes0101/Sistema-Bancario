@@ -151,7 +151,7 @@ export default function Funcionarios() {
   );
 }
 
-/** Caixas de seleção agrupadas. Só se podem ADICIONAR permissões que quem edita também possui. */
+
 function EditorPermissoes({ valor, aoMudar, disponiveis }) {
   const alternar = (k) => aoMudar(valor.includes(k) ? valor.filter((x) => x !== k) : [...valor, k]);
 

@@ -35,7 +35,7 @@ export default function Transacoes() {
 
   useEffect(() => {
     if (podeVer) carregar(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [podeVer]);
 
   async function procurar(e) {

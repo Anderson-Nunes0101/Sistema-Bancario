@@ -8,13 +8,13 @@ export class ErroApi extends Error {
   }
 }
 
-// ---- sessão (sessionStorage: termina ao fechar o separador) ----
+
 export function lerSessao() {
   try {
     const s = JSON.parse(sessionStorage.getItem(CHAVE));
     if (s && Date.parse(s.expiraEm) > Date.now()) return s;
   } catch {
-    // ignorar
+   
   }
   sessionStorage.removeItem(CHAVE);
   return null;
@@ -57,7 +57,7 @@ async function pedir(metodo, caminho, { corpo, params } = {}) {
   try {
     dados = await res.json();
   } catch {
-    // resposta sem corpo JSON
+    
   }
 
   if (!res.ok) {

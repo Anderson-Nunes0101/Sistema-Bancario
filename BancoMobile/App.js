@@ -30,7 +30,7 @@ function Raiz() {
     const eCliente = sessao?.tipo === "CLIENTE";
 
     const [tela, setTela] = useState(null);
-    // incrementa para forçar o recarregamento do saldo/extrato depois de uma transferência
+    
     const [versao, setVersao] = useState(0);
 
     if (carregando) {
@@ -45,7 +45,7 @@ function Raiz() {
         return <Login />;
     }
 
-    // Menus conforme o perfil e as permissões
+   
     const itens = eCliente
         ? [
             { nome: "conta", titulo: "Minha conta" },

@@ -55,7 +55,7 @@ export default function Login() {
             style={styles.container}
             behavior={Platform.OS === "ios" ? "padding" : undefined}
         >
-            <Text style={styles.logo}>BANCO MOBILE</Text>
+            <Text style={styles.logo}>BANCO N-BANC</Text>
             <Text style={styles.sub}>Aceda à sua conta</Text>
 
             <View style={styles.tipos}>

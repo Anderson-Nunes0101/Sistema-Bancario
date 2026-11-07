@@ -152,7 +152,7 @@ export default function Contas() {
 
 const TAMANHO = 30;
 
-/** Extrato em formato de caderneta: débito, crédito e saldo corrido. */
+
 function Extrato({ conta }) {
   const [itens, setItens] = useState([]);
   const [pagina, setPagina] = useState(0);
@@ -177,7 +177,7 @@ function Extrato({ conta }) {
 
   useEffect(() => {
     carregar(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, [conta.id]);
 
   const operacao = (i) =>

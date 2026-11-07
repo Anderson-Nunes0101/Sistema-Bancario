@@ -40,6 +40,6 @@ export async function limparSessao() {
     try {
         await SecureStore.deleteItemAsync(CHAVE);
     } catch (e) {
-        // ignorar
+       
     }
 }

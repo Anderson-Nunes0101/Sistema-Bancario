@@ -74,3 +74,4 @@ const styles = StyleSheet.create({
     botao: { backgroundColor: "#1455a0", padding: 15, borderRadius: 8, alignItems: "center" },
     botaoTexto: { color: "#fff", fontWeight: "bold" }
 });
+//hacker-chefao
