@@ -49,7 +49,7 @@ public class AuthService {
         this.hashFalso = encoder.encode("hash-falso-para-igualar-tempo");
     }
 
-    // noRollbackFor: o contador de tentativas falhadas tem de ser gravado mesmo quando se lança a exceção.
+    
     @Transactional(noRollbackFor = AuthenticationException.class)
     public LoginResponse loginFuncionario(String email, String senha) {
         Usuario u = usuarioRepository.findByEmailIgnoreCase(email.trim())
@@ -139,7 +139,6 @@ public class AuthService {
         contaRepository.save(c);
     }
 
-    /** Valida o PIN aplicando o bloqueio temporário após demasiadas tentativas. */
     private void verificarPin(Conta c, String pin) {
         LocalDateTime agora = LocalDateTime.now();
         if (c.getBloqueadoAte() != null) {
