@@ -26,7 +26,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** Gestão de utilizadores de back-office (funcionários/admin), permissões e indicadores do painel admin. */
+
 @Service
 public class AdminService {
 
