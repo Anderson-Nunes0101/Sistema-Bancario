@@ -183,11 +183,101 @@ function Extrato({ conta }) {
   const operacao = (i) =>
     i.tipo === "DEPOSITO" ? "Depósito" : i.sentido === "CREDITO" ? "Transferência recebida" : "Transferência enviada";
 
+  const exportarPdf = () => {
+    const linhas = itens.map((i) => {
+      const credito = i.sentido === "CREDITO";
+      return `
+        <tr>
+          <td>${dataHora(i.dataHora)}</td>
+          <td>
+            ${operacao(i)}
+            ${i.descricao ? `<span class="nota">${i.descricao}</span>` : ""}
+          </td>
+          <td>${i.contraparte || "—"}</td>
+          <td class="num debito">${!credito ? moeda(i.valor) : ""}</td>
+          <td class="num credito">${credito ? moeda(i.valor) : ""}</td>
+          <td class="num">${i.saldoApos != null ? moeda(i.saldoApos) : "—"}</td>
+        </tr>
+      `;
+    }).join("");
+
+    const html = `
+      <!doctype html>
+      <html lang="pt">
+        <head>
+          <meta charset="utf-8" />
+          <title>Banco - Extrato da conta ${conta.numeroConta}</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif; color: #1b2633; margin: 2rem; background: #fff;
+            }
+            .cabecalho {
+              border-bottom: 2px solid #0d2540; padding-bottom: 0.75rem; margin-bottom: 1.5rem;
+            }
+            .cabecalho h1 { margin: 0; color: #0d2540; font-size: 2rem; }
+            .cabecalho p { margin: 0.5rem 0 0; color: #5a6776; }
+            .dados { margin-bottom: 1rem; line-height: 1.6; }
+            table {
+              width: 100%; border-collapse: collapse; font-size: 0.82rem;
+            }
+            th, td {
+              border: 1px solid #d9dfe7; padding: 0.55rem 0.7rem; text-align: left; vertical-align: top;
+            }
+            th {
+              background: #eef2f6; font-weight: 700; color: #1b2633;
+            }
+            .num { text-align: right; }
+            .credito { color: #12724f; }
+            .debito { color: #b3261e; }
+            .nota { display: block; color: #5a6776; font-size: 0.72rem; margin-top: 0.2rem; }
+            @page { size: A4; margin: 1.5cm; }
+          </style>
+        </head>
+        <body>
+          <div class="cabecalho">
+            <h1>Banco</h1>
+            <p>Extrato da conta ${conta.numeroConta}</p>
+          </div>
+          <div class="dados">
+            <p><strong>Titular:</strong> ${conta.clienteNome}</p>
+            <p><strong>Saldo atual:</strong> ${moeda(conta.saldo)}</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Operação</th>
+                <th>Conta</th>
+                <th class="num">Débito</th>
+                <th class="num">Crédito</th>
+                <th class="num">Saldo</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${linhas || '<tr><td colspan="6">Sem movimentos.</td></tr>'}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `;
+
+    const janela = window.open("", "_blank", "noopener,noreferrer");
+    if (!janela) return;
+
+    janela.document.write(html);
+    janela.document.close();
+    janela.focus();
+    setTimeout(() => janela.print(), 250);
+  };
+
   return (
     <div>
-      <p>
-        Titular: <strong>{conta.clienteNome}</strong>. Saldo atual: <strong>{moeda(conta.saldo)}</strong>.
-      </p>
+      <div className="extrato-acoes">
+        <p>
+          Titular: <strong>{conta.clienteNome}</strong>. Saldo atual: <strong>{moeda(conta.saldo)}</strong>.
+        </p>
+        <button type="button" className="btn" onClick={exportarPdf}>Baixar PDF</button>
+      </div>
       {erro && <p className="erro-form" role="alert">{erro}</p>}
       {!aCarregar && !erro && itens.length === 0 ? (
         <Vazio>Esta conta ainda não tem movimentos.</Vazio>

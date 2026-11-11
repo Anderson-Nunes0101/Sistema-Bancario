@@ -92,6 +92,9 @@ p { margin: 0 0 0.75rem; }
 .caderneta .tabela td:first-child, .caderneta .tabela th:first-child { border-right: 1px solid #e3b5b0; }
 .caderneta .tabela tbody tr:nth-child(even) { background: #f8fafc; }
 
+.extrato-acoes { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.extrato-acoes p { margin: 0; }
+
 .vazio { padding: 1.5rem; border: 1px dashed var(--linha-forte); border-radius: var(--raio); color: var(--suave); background: var(--superficie); }
 .bloco-erro { padding: 1rem 1.25rem; border: 1px solid #e8b4af; border-radius: var(--raio); background: #fdf0ee; color: #7a1d16; margin-bottom: 1rem; }
 .bloco-erro p { margin-bottom: 0.5rem; }
